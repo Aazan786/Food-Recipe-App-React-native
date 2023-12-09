@@ -6,43 +6,29 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 25,
         paddingTop: 80,
-        // paddingVertical: 100,
 
     },
 
     Title: {
         color: colors.black,
-        fontSize: 30,
+        fontSize: 25,
         fontWeight: 'bold',
+        marginLeft: 98,
+        marginTop: -33,
     },
                                            
     subtitle: {
         color: '#121212',
-        fontSize: 20,
-        fontWeight: 'normal',
-        paddingVertical: 4,
-        marginBottom: 50,
+        fontSize: 17,
+        fontWeight: 'bold',
+        marginBottom: -5,
+        marginTop: 100,
     },
 
-    footerText:{
-        color: colors.black,
-        fontSize: 15,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginTop: 28,
-        marginTop: 32,
-    },
-
-    footerLink:{
-        color: colors.orange,
-        fontWeight: 'bold',
-        fontSize: 16,
-    }, 
     forgotpassword:{
         color: colors.orange,
         fontWeight: 'normal',
         fontSize: 15,
-        // paddingTop:-20
     },
 
     buttoncontainer: {

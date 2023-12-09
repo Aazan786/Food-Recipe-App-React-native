@@ -16,7 +16,7 @@ const Splash = ({navigation}) => {
                 <Text style={styles.bigTitle}>Get</Text>
                 <Text style={styles.bigTitle}>Cooking</Text>
                 <Text style={styles.subTitle}>Simple way to find Tasty Recipe</Text>
-                <Buttons onpress = {()=> navigation.navigate('Signin')}>Start Cooking</Buttons>
+                <Buttons onPress = {()=> navigation.navigate('Signin')}>Start Cooking</Buttons>
             </View>
         </ImageBackground>
     

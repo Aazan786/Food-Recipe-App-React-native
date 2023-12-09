@@ -10,7 +10,10 @@ const Input = ({iconName, iconSize, ...props }) => {
     return (
     <View style={styles.container}>
        <FontAwesome name={iconName} style={[styles.icon, { fontSize: iconSize }]} />
-        <TextInput placeholderTextColor={colors.darkgrey} style={styles.input} {...props}/>
+        <TextInput placeholderTextColor={colors.darkgrey}
+        // keyboardType= {keyboardType}
+        style={styles.input} {...props}
+        />
     </View>
     )
     

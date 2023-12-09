@@ -5,8 +5,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 25,
-        paddingTop: 80,
-        // paddingVertical: 100,
+        paddingTop: 120,
 
     },
 
@@ -14,37 +13,24 @@ const styles = StyleSheet.create({
         color: colors.black,
         fontSize: 30,
         fontWeight: 'bold',
+        marginLeft: 65,
+        marginTop: 20,
     },
                                            
     subtitle: {
-        color: '#121212',
-        fontSize: 20,
-        fontWeight: 'normal',
-        paddingVertical: 4,
-        marginBottom: 50,
-    },
-
-    footerText:{
         color: colors.black,
-        fontSize: 15,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        marginTop: 28,
-        marginTop: 32,
-    },
-
-    footerLink:{
-        color: colors.orange,
-        fontWeight: 'bold',
-        fontSize: 16,
-    }, 
-    forgotpassword:{
-        color: colors.orange,
+        fontSize: 17,
         fontWeight: 'normal',
-        fontSize: 15,
-        // paddingTop:-20
+        marginTop: 10,
+        flexDirection: 'row',
+        backgroundColor: 'rgba(217,217,217,0.5)',
+        borderRadius: 10,
+        paddingHorizontal: 16,
+        paddingVertical: 16,
+        marginVertical: 4,
+        marginLeft: 15,
+        marginRight:30,
     },
-
     buttoncontainer: {
         backgroundColor: colors.green,
         flexDirection: 'row',

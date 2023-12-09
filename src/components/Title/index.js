@@ -1,11 +1,16 @@
-import React from "react";
+import React from 'react';
+import { Text } from 'react-native';
 import styles from "./style";
-import {Text} from "react-native";
 
-const Title = ({children}) => {
-    return(
-       <Text style={styles.title}>{children}</Text>
-    )
-}
+
+const Title = ({ text, style }) => {
+    return (
+        <Text style={[styles.title, style]}>{text}</Text>
+    );
+};
+
+Title.defaultProps = {
+    text: 'Title'
+};
 
 export default React.memo(Title);
