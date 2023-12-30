@@ -10,7 +10,7 @@ Welcome to our React Native Expo mobile app project! This project serves as the 
 To use this app, follow these simple steps:
 
 ### Clone the Repository:
-git clone https://github.com/your-username/your-mobile-app.git
+git clone repository link
 cd your-mobile-app
 
 ### Install Dependencies:
