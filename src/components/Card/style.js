@@ -10,9 +10,10 @@ const styles = StyleSheet.create({
         padding: 10,
         width: width * 0.4,
         marginVertical: 32,
-        marginTop: 65,
+        marginTop: 75,
         marginLeft: 30,
         marginRight: 16,
+        height: 150,
 
     },
     title: {
@@ -31,10 +32,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     SavedIcon: {
-        width: 25,
-        height: 25,
+        width: 35,
+        height: 35,
         marginRight: 8, 
-        marginTop: 4,
+        marginTop: 15,
         marginLeft:113,
         tintColor: colors.darkgrey,
     }

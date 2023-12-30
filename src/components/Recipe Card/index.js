@@ -1,32 +1,33 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React, { useEffect, useContext } from 'react';
+import { Text, TouchableOpacity } from 'react-native';
 import styles from "./style";
 import { View, Image } from 'react-native';
+import { API_BASE_URL } from "../../api/api";
 
 
-const RecipeCard = ({ RecipeTitle, image, owner, favourite, style }) => {
+
+const RecipeCard = ({ RecipeTitle, image, ownername, profilepic, style, onPress }) => {
+
+
     return (
-        <View style={[styles.container, style]}>
-            <View>
-                <Text numberOfLines={1} ellipsizeMode="tail" style={styles.Title}>{RecipeTitle}</Text>
-                <Image style={styles.image} source={{ uri: 'https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/12/Shakshuka-19.jpg' }} />
-            </View>
-
-
-            <View style={[styles.row, { justifyContent: 'space-between' }]}>
-                <View style={styles.row}>
-                    <Image style={styles.authorImage} source={{ uri: owner?.image }} />
-                    <Text style={styles.authorName}>By {owner?.name}</Text>
+        <TouchableOpacity onPress={onPress}>
+            <View style={[styles.container, style]}>
+                <View>
+                    <Text numberOfLines={1} ellipsizeMode="tail" style={styles.Title}>{RecipeTitle}</Text>
+                    <Image style={styles.image} source={{ uri: `${API_BASE_URL}/${image}` }} />
                 </View>
 
-                <View style={styles.row}>
-                    <Image style={styles.SavedIcon} source={require('../../../assets/love.png')} />
+                <View style={[styles.row, { justifyContent: 'space-between' }]}>
+                    <View style={styles.row}>
+                        <Image style={styles.authorImage} source={{ uri: `${API_BASE_URL}/${profilepic}` }} />
+                        <Text style={styles.authorName}>By {ownername}</Text>
+                    </View>
                 </View>
             </View>
-
-        </View>
+        </TouchableOpacity>
     );
 };
+
 
 
 export default React.memo(RecipeCard);

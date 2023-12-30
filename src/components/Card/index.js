@@ -1,21 +1,20 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Pressable, Text } from 'react-native';
 import styles from "./style";
 import { View, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import {  HeartIcon} from 'react-native-heroicons/solid';
-import colors from '../../constants/colors';
 
 
-const Card = ({ RecipeTitle, image, style, favourite }) => {
-        return (
+
+const Card = ({ RecipeTitle, RecipeImage, style, onPress }) => {
+    return (
+        <TouchableOpacity onPress={onPress}>
             <View style={[styles.container, style]}>
-                <Image style={styles.image} source={{ uri: 'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg'}} />
-                <Text  numberOfLines={3} ellipsizeMode="tail" style={styles.title}>{RecipeTitle}</Text>
-                {/* <TouchableOpacity>{favourite}</TouchableOpacity> */}
-                <Image style={styles.SavedIcon} source={require('../../../assets/love.png')} />
+                <Image style={styles.image} source={{ uri: RecipeImage }} />
+                <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>{RecipeTitle}</Text>
             </View>
-        );
-    };
+        </TouchableOpacity>
+    );
+};
 
 export default React.memo(Card);

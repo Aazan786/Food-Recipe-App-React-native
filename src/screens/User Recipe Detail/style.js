@@ -7,7 +7,14 @@ const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 24,
         flex: 1,
+       
     },
+
+    loadingContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
 
     image: {
         width: 350,
@@ -19,6 +26,17 @@ const styles = StyleSheet.create({
 
     },
 
+    saveIcon:{
+        flex: 1,
+       position: 'absolute',
+       top: 170, 
+       right: 40, 
+       backgroundColor: 'white',
+       borderRadius: 23, 
+       width: 45, 
+       height: 45,
+       padding: 5, 
+    },
     title: {
         color: colors.black,
         fontSize: 23,
@@ -76,6 +94,7 @@ const styles = StyleSheet.create({
             marginVertical: 4,
             marginLeft: 30,
             marginRight:30,
+            // marginBottom: 130
         },
 
         instructionRow: {
@@ -96,11 +115,6 @@ const styles = StyleSheet.create({
             flex: 1,
             maxWidth: 270,
         },
-        loadingContainer: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-          },
     })
         
 

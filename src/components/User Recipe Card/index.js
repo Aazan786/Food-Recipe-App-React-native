@@ -3,16 +3,17 @@ import { Text } from 'react-native';
 import styles from "./style";
 import { View, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { API_BASE_URL } from "../../api/api";
 
 
 
 const UserRecipeCard = ({ Title, image, style }) => {
     return (
         <View style={[styles.container, style]}>
-            <Image style={styles.image} source={{ uri: 'https://images.immediate.co.uk/production/volatile/sites/30/2013/05/Puttanesca-fd5810c.jpg' }} />
+            <Image style={styles.image} source={{  uri: `${API_BASE_URL}/${image}`}} />
            
             <LinearGradient
-                colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.65)']} // Adjust the opacity as needed
+                colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.65)']}
                 style={styles.gradient}
             />
                 <Text  numberOfLines={2} style={styles.title}>{Title}</Text>

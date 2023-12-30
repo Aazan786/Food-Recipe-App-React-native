@@ -9,11 +9,11 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white,
         padding: 10,
         width: width * 0.7,
-        marginBottom:32,
+        marginBottom: 32,
         marginTop: 48,
         marginLeft: 30,
         height: 90,
-        
+
 
         // iOS
         shadowColor: "#000",
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     footer: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between', 
+        justifyContent: 'space-between',
         marginTop: 8
     },
     authorName: {
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     SavedIcon: {
         width: 25,
         height: 25,
-        marginRight: 8, 
+        marginRight: 8,
         marginTop: 4,
         tintColor: colors.darkgrey
     },
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         height: 83,
         borderRadius: 50,
         marginTop: -68,
-        marginLeft:180,
+        marginLeft: 180,
     }
 });
 

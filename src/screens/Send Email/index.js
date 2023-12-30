@@ -14,12 +14,12 @@ const SendEmail = ({ navigation }) => {
                     <EnvelopeIcon color="#173147" size={60}/>
                 </View>
                 <Text style={styles.Title}>Check Your Email</Text>
-                <Text style={styles.subtitle}>We have sent you an email with password reset information. Click link to reset password</Text>
+                <Text style={styles.subtitle}>We have sent you an email with 6 digit OTP. Enter that OTP during password reset as it will be expire withn 4 minutes.</Text>
                 
                 <TouchableOpacity onPress={() => navigation.navigate('NewPassword')} style={styles.buttoncontainer}>
                     <Text
                         style={styles.text}>
-                        Send
+                        Reset Password
                     </Text>
                     <Image style={styles.icon} source={require('../../../assets/Arrow-Right.png')} />
                 </TouchableOpacity>

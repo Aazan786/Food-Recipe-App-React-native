@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: -100,
         marginLeft: 40,
-        // marginVertical: 10,
     },
+
     recipecounter:{
         fontSize: 25,
         color: colors.black,
@@ -39,28 +39,38 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     editprofile:{
-        fontSize: 20,
-        color: colors.darkgrey,
+        fontSize: 17,
+        color: colors.white,
         fontWeight: 'normal',
         textAlign: 'center',
         marginTop: -25,
-        marginLeft: 290,
+        marginLeft: 300,
+        backgroundColor: colors.green,
+        borderRadius: 10,
+        paddingHorizontal: 6,
+        paddingVertical: 1,
+        marginRight:50,
+        
     },
     recipetitle:{
-        fontSize: 20,
+        fontSize: 18,
         color: colors.white,
         fontWeight: 'bold',
-        marginLeft: 30,
         backgroundColor: colors.green,
-        alignItems: 'left',
         borderRadius: 10,
-        paddingHorizontal: 60,
-        paddingVertical: 10,
+        paddingHorizontal: 6,
+        paddingVertical: 6,
         marginTop: 30,
         marginBottom: 10,
         marginLeft: 30,
-        marginRight:190,
+        marginRight:255,
     },
+
+    loadingContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
 
     
 

@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
       },
     icon: {
         marginRight: 5,
-        color: colors.darkgrey,
+        // color: colors.darkgrey,
       },
 })
 

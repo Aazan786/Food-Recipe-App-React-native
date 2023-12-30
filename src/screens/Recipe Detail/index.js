@@ -1,36 +1,76 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./style";
-import { ImageBackground, Text, View, Image, SafeAreaView, FlatList, TouchableOpacity } from "react-native";
+import { ImageBackground, Text, View, Image, SafeAreaView, TouchableOpacity, ActivityIndicator } from "react-native";
 import Title from "../../components/Title";
 import Card from "../../components/Card";
 import { ScrollView } from "react-native-gesture-handler";
-import { color } from "react-native-elements/dist/helpers";
-import colors from "../../constants/colors";
+import axios from "axios";
 
 
-const RecipeDetail = ({ navigation, route, }) => {
+const RecipeDetail = ({ navigation, route }) => {
 
-    const Ingridents = {
-        "strIngredient1": "Milk",
-        "strIngredient2": "Oil",
-        "strIngredient3": "Eggs",
-        "strIngredient4": "Flour",
-        "strIngredient5": "Baking Powder",
-        "strIngredient6": "Salt",
+    const { recipeId } = route.params;
+    const [singleRecipe, setSingleRecipe] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+
+    useEffect(() => {
+
+        getSingleRecipes(recipeId)
+    }, [recipeId])
+
+
+    const getSingleRecipes = (id) => {
+
+        axios.get(`https://themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+            .then(response => {
+                setSingleRecipe(response.data.meals[0]);
+                setIsLoading(false)
+            })
+            .catch(error => {
+                console.error('Error fetching singleRecipes data from mealdbserver:', error);
+                setIsLoading(false)
+            });
+
     }
 
-    const Instructions = {
-        "Step 1": "Bring a large pot of water to a boil and season generously with salt. Bring a large pot of water to a boil and season generously with salt. Add the pasta",
-        "Step 2": "Add some salt and oregano.Bring a large pot of water to a boil and season generously with salt. Add the pasta to the water once boiling and cook until al dente. Reserve 2 cups of cooking water and drain the pasta.",
-        "Step 3": "Bring a large pot of water to a boil and season generously with salt. Add the pasta to the water once boiling and cook until al dente. Reserve 2 cups of cooking water and drain the pasta.",
-        "Step 4": "Preheat the oven to 200 degrees F.Bring a large pot of water to a boil and season generously with salt. Add the pasta to the water once boiling and cook until al dente. Reserve 2 cups of cooking water and drain the pasta.",
-        "Step 5": "Bring a large pot of water to a boil and season generously with salt. Add the pasta to the water once boiling and cook until al dente. Reserve 2 cups of cooking water and drain the pasta.",
-
+    if (isLoading) {
+        return (
+            <View style={styles.loadingContainer}>
+                <ActivityIndicator size="large" color="#B1AEAE" />
+            </View>
+        );
     }
 
-    const Ingridentskey = Object.keys(Ingridents)
+    const renderIngredients = () => {
+        const ingredients = [];
+        for (let i = 1; i <= 20; i++) {
+            const ingredientKey = `strIngredient${i}`;
+            const measureKey = `strMeasure${i}`;
 
-    const Instructionkey = Object.keys(Instructions)
+            if (singleRecipe[ingredientKey]) {
+                const ingredientText = `${singleRecipe[ingredientKey]} - ${singleRecipe[measureKey] || 'N/A'}`;
+                ingredients.push(
+                    <View key={ingredientKey} style={styles.row}>
+                        <Text style={styles.value}>{ingredientText}</Text>
+                    </View>
+                );
+            }
+        }
+        return ingredients;
+    };
+
+    const renderInstructions = () => {
+        const instructions = singleRecipe.strInstructions.split(/\r\n\r\n|\r\n/)
+        .filter(step => step.trim() !== '');;
+
+        return instructions.map((step, index) => (
+            <View key={index} style={styles.instructionRow}>
+                <Text style={styles.index}>{`Step ${index + 1}`}</Text>
+                <Text style={styles.instructionText}>{step}</Text>
+            </View>
+        ));
+    };
 
 
     return (
@@ -46,27 +86,17 @@ const RecipeDetail = ({ navigation, route, }) => {
                 <Title text="Recipe Detail" />
             </View>
 
-            <ScrollView style={{marginBottom: 93}}>
+            <ScrollView style={{ marginBottom: 93 }}>
                 <View>
-                    <Image style={styles.image} source={{ uri: 'https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/63O2DBTTTEI6VKN5T6FVSMYA2A.jpg&w=860' }} />
-                    <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>Steak with tomato sauce and bulgur rice.</Text>
+                    <Image style={styles.image} source={{ uri: singleRecipe.strMealThumb }} />
+                    <Text numberOfLines={2} ellipsizeMode="tail" style={styles.title}>{singleRecipe.strMeal}</Text>
                 </View>
 
                 <Text style={styles.HeadingTitle}>Ingridents</Text>
-                {Ingridentskey?.map(key => (
-                    <View key={key} style={styles.row}>
-                        {/* <Text style={styles.key}>{key}</Text> */}
-                        <Text style={styles.value}>{Ingridents[key]}</Text>
-                    </View>
-                ))}
+                {renderIngredients()}
 
                 <Text style={styles.HeadingTitle}>Instructions</Text>
-                {Instructionkey?.map(key => (
-                    <View key={key} style={styles.instructionRow}>
-                        <Text style={styles.index}>{key}</Text>
-                        <Text style={styles.instructionText}>{Instructions[key]}</Text>
-                    </View>
-                ))}
+                {renderInstructions()}
             </ScrollView>
         </SafeAreaView>
 
